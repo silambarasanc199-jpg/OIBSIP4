@@ -1,0 +1,303 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #050816;
+    --panel: #0b1020;
+    --button: #11182b;
+    --text: #f5f7ff;
+    --muted: #7f8aa8;
+    --accent: #00f5d4;
+    --accent-soft: rgba(0, 245, 212, 0.12);
+    --border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    background:
+        radial-gradient(circle at 20% 20%, rgba(0, 245, 212, 0.08), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(123, 97, 255, 0.1), transparent 30%),
+        var(--bg);
+
+    color: var(--text);
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    overflow-x: hidden;
+}
+
+.calculator-wrapper {
+    width: 100%;
+    max-width: 430px;
+}
+
+.calculator {
+    padding: 22px;
+
+    background: rgba(11, 16, 32, 0.92);
+
+    border: 1px solid var(--border);
+    border-radius: 22px;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.45),
+        0 0 45px rgba(0, 245, 212, 0.06);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+.calculator-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+.brand {
+    color: var(--accent);
+
+    font-size: 1.2rem;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+.subtitle {
+    margin-top: 3px;
+
+    color: var(--muted);
+
+    font-size: 0.6rem;
+    letter-spacing: 1.5px;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    color: var(--muted);
+
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+}
+
+.status span {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    box-shadow: 0 0 10px var(--accent);
+}
+
+.display-area {
+    padding: 20px;
+
+    margin-bottom: 15px;
+
+    background: #050914;
+
+    border: 1px solid var(--border);
+    border-radius: 15px;
+
+    text-align: right;
+
+    overflow: hidden;
+}
+
+.history {
+    min-height: 20px;
+
+    margin-bottom: 5px;
+
+    color: var(--muted);
+
+    font-size: 0.8rem;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.display {
+    width: 100%;
+
+    padding: 0;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: var(--text);
+
+    font-size: clamp(2rem, 8vw, 3rem);
+    font-weight: 700;
+
+    text-align: right;
+}
+
+.keypad {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 10px;
+}
+
+.keypad button {
+    min-height: 68px;
+
+    border: 1px solid var(--border);
+    border-radius: 13px;
+
+    background: var(--button);
+
+    color: var(--text);
+
+    font-size: 1.15rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+.keypad button:hover {
+    border-color: rgba(0, 245, 212, 0.4);
+
+    background: #172139;
+}
+
+.keypad button:active {
+    transform: scale(0.94);
+}
+
+.keypad .function {
+    color: var(--accent);
+}
+
+.keypad .operator {
+    color: var(--accent);
+
+    background: var(--accent-soft);
+}
+
+.keypad .equals {
+    grid-column: span 1;
+
+    background: var(--accent);
+    color: #03100e;
+
+    border-color: var(--accent);
+
+    font-size: 1.4rem;
+
+    box-shadow:
+        0 0 25px rgba(0, 245, 212, 0.18);
+}
+
+.keypad .equals:hover {
+    background: #28ffe2;
+    color: #03100e;
+}
+
+.keypad .zero {
+    grid-column: span 2;
+}
+
+.footer-text {
+    margin-top: 18px;
+
+    color: var(--muted);
+
+    text-align: center;
+
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 500px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .calculator {
+        padding: 17px;
+
+        border-radius: 18px;
+    }
+
+    .keypad {
+        gap: 8px;
+    }
+
+    .keypad button {
+        min-height: 62px;
+
+        border-radius: 11px;
+    }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 360px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .calculator {
+        padding: 13px;
+    }
+
+    .calculator-header {
+        margin-bottom: 14px;
+    }
+
+    .brand {
+        font-size: 1rem;
+    }
+
+    .display-area {
+        padding: 15px;
+    }
+
+    .keypad {
+        gap: 6px;
+    }
+
+    .keypad button {
+        min-height: 55px;
+
+        font-size: 1rem;
+    }
+}
